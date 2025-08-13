@@ -45,12 +45,33 @@ function App() {
   // Create new user
   const createUser = async (userData) => {
     try {
+      console.log('Creating user:', userData);
+      console.log('POST URL:', `${API_BASE_URL}/users`);
       const response = await axios.post(`${API_BASE_URL}/users`, userData);
+      console.log('User created successfully:', response.data);
       setUsers([...users, response.data]);
       setFormData({ name: '', email: '' });
       setError('');
     } catch (err) {
-      setError('Failed to create user: ' + err.message);
+      console.error('Error creating user:', err);
+      console.error('Error response:', err.response);
+      console.error('Error code:', err.code);
+      
+      let errorMessage = 'Failed to create user: ';
+      if (err.code === 'ECONNREFUSED') {
+        errorMessage += 'Backend server is not running on port 8080';
+      } else if (err.response) {
+        errorMessage += `Server error ${err.response.status}: ${err.response.statusText}`;
+        if (err.response.data) {
+          errorMessage += ` - ${JSON.stringify(err.response.data)}`;
+        }
+      } else if (err.request) {
+        errorMessage += 'Network error - check if backend is running';
+      } else {
+        errorMessage += err.message;
+      }
+      
+      setError(errorMessage);
     }
   };
 
