@@ -2,7 +2,19 @@
 
 A full-stack CRUD application demonstrating modern web development with Ballerina, React, and Supabase.
 
-## 🏗️ Architecture
+## � New User?
+
+**👋 First time here?** Follow our simplified quick-start guide for Windows users!
+
+[![📖 New User Guide](https://img.shields.io/badge/📖%20New%20User%20Guide-Click%20Here-blue?style=for-the-badge)](./newUser.md)
+
+**[→ Click here to go to the New User Guide](./newUser.md)**
+
+The new user guide provides a streamlined setup process specifically designed for Windows users with PowerShell commands and step-by-step instructions.
+
+---
+
+## �🏗️ Architecture
 
 ```
 React Frontend (Port 3000)
